@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 840000002}
+  - component: {fileID: 840000099}
   m_Layer: 0
   m_Name: EncuentroMonoblock
   m_TagString: Untagged
@@ -32,6 +33,8 @@ Transform:
   - {fileID: 1573680377}
   - {fileID: 2024903108}
   - {fileID: 377846905}
+  - {fileID: 840001101}
+  - {fileID: 840001201}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &247003442
@@ -1498,7 +1501,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 344, y: 94}
+  m_SizeDelta: {x: 564, y: 94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &443524760
 CanvasRenderer:
@@ -1691,7 +1694,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: GANA LUIS
+  m_Text: Victoria de la Jornada
 --- !u!1 &717682108
 GameObject:
   m_ObjectHideFlags: 0
@@ -1808,7 +1811,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 20, y: 18}
-  m_SizeDelta: {x: 538, y: 62}
+  m_SizeDelta: {x: 620, y: 68}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &840000012
 MonoBehaviour:
@@ -1918,7 +1921,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Encuentra al rival junto a las gradas del Monoblock."
+  m_Text: "Misión 1 · Llegada al Bicentenario"
 --- !u!222 &840000023
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1997,7 +2000,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "WASD o flechas · Caminar    Mayús · Correr    Ratón · Mirar    Tab · Mapa"
+  m_Text: "Camina con WASD o las flechas hasta el aro junto a las mesas del Café Ciudad."
 --- !u!222 &840000033
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2006,3 +2009,132 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840000030}
   m_CullTransparentMesh: 1
+--- !u!114 &840000099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840000001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1852501b7b7c573b8e3242afc82d6a0c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::SupervivenciaEnLaPaz.GestorMisiones
+  combate: {fileID: 377846902}
+  titulo: {fileID: 840000022}
+  instruccion: {fileID: 840000032}
+  materialMarcador: {fileID: 2100000, guid: 3427fc8f277151b38aaf99cc1d6cf088, type: 2}
+  adversario: {fileID: 4699517127127062744, guid: ace83116336b5782ba466b3bef6b9a19, type: 3}
+  prefabMochila: {fileID: 341310000, guid: 765a4a575f5850848b4def1057fb49d3, type: 3}
+  animacionHuida: {fileID: 9100000, guid: aef710d9b0f53f541ad39236bbf75674, type: 2}
+  puntoCafe: {x: -14.65, y: 0.02, z: -14.8}
+  radioCafe: 1.6
+  puntosEmboscada:
+  - {x: -11.35, y: 0, z: -13.4}
+  - {x: -20.7, y: 0, z: -16.7}
+  rutaVillazon:
+  - {x: 5.4, y: 0, z: 7.5}
+  - {x: 10.3, y: 0, z: 3.9}
+  - {x: 6.6, y: 0, z: -3.95}
+  - {x: 0.6, y: 0, z: -7.6}
+  - {x: -7.1, y: 0, z: -2.4}
+  - {x: -12.15, y: 0, z: 3.05}
+  - {x: -18, y: 0.55, z: 3.05}
+  - {x: -25.2, y: 0.55, z: 0.65}
+  - {x: -23.35, y: 0.55, z: 8}
+  - {x: -17.2, y: 0.55, z: 6.9}
+  tiempoLimite: 40
+  velocidadLadron: 4.35
+--- !u!1001 &840001100
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 840000002}
+    m_Modifications:
+    - target: {fileID: 341320000, guid: 5f502f27049f5bab81e8fe554a50fdb7, type: 3}
+      propertyPath: m_Name
+      value: Baranda izquierda del café
+      objectReference: {fileID: 0}
+    - target: {fileID: 341320001, guid: 5f502f27049f5bab81e8fe554a50fdb7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -17.142912
+      objectReference: {fileID: 0}
+    - target: {fileID: 341320001, guid: 5f502f27049f5bab81e8fe554a50fdb7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 341320001, guid: 5f502f27049f5bab81e8fe554a50fdb7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -15.534507
+      objectReference: {fileID: 0}
+    - target: {fileID: 341320001, guid: 5f502f27049f5bab81e8fe554a50fdb7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.23344536
+      objectReference: {fileID: 0}
+    - target: {fileID: 341320001, guid: 5f502f27049f5bab81e8fe554a50fdb7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.97236992
+      objectReference: {fileID: 0}
+    - target: {fileID: 341320001, guid: 5f502f27049f5bab81e8fe554a50fdb7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -27
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f502f27049f5bab81e8fe554a50fdb7, type: 3}
+--- !u!4 &840001101 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 341320001, guid: 5f502f27049f5bab81e8fe554a50fdb7, type: 3}
+  m_PrefabInstance: {fileID: 840001100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &840001200
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 840000002}
+    m_Modifications:
+    - target: {fileID: 341320000, guid: 5f502f27049f5bab81e8fe554a50fdb7, type: 3}
+      propertyPath: m_Name
+      value: Baranda derecha del café
+      objectReference: {fileID: 0}
+    - target: {fileID: 341320001, guid: 5f502f27049f5bab81e8fe554a50fdb7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.598779
+      objectReference: {fileID: 0}
+    - target: {fileID: 341320001, guid: 5f502f27049f5bab81e8fe554a50fdb7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 341320001, guid: 5f502f27049f5bab81e8fe554a50fdb7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.219156
+      objectReference: {fileID: 0}
+    - target: {fileID: 341320001, guid: 5f502f27049f5bab81e8fe554a50fdb7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.23344536
+      objectReference: {fileID: 0}
+    - target: {fileID: 341320001, guid: 5f502f27049f5bab81e8fe554a50fdb7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.97236992
+      objectReference: {fileID: 0}
+    - target: {fileID: 341320001, guid: 5f502f27049f5bab81e8fe554a50fdb7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -27
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f502f27049f5bab81e8fe554a50fdb7, type: 3}
+--- !u!4 &840001201 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 341320001, guid: 5f502f27049f5bab81e8fe554a50fdb7, type: 3}
+  m_PrefabInstance: {fileID: 840001200}
+  m_PrefabAsset: {fileID: 0}

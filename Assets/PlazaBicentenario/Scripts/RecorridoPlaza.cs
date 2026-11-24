@@ -34,6 +34,17 @@ namespace SupervivenciaEnLaPaz
             vista.EnfocarRival(objetivo);
         }
 
+        internal void Reubicar(Vector3 punto, Vector3 mirarHacia)
+        {
+            controlador.enabled = false;
+            transform.position = punto + Vector3.up * 0.03f;
+            Vector3 direccion = Vector3.ProjectOnPlane(mirarHacia - punto, Vector3.up);
+            if (direccion.sqrMagnitude > 0.001f) transform.rotation = Quaternion.LookRotation(direccion);
+            velocidadVertical = 0f;
+            controlador.enabled = true;
+            vista.Seguir(transform);
+        }
+
         private void Update()
         {
             Keyboard teclado = Keyboard.current;
