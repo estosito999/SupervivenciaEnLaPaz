@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 namespace SupervivenciaEnLaPaz.Editor
@@ -101,17 +102,9 @@ namespace SupervivenciaEnLaPaz.Editor
         {
             Transform grupo = Grupo("Entorno de la avenida Villazón");
             Transform contexto = Grupo("Aceras y calzada lateral", grupo);
-            var terreno = new Geometria();
-            terreno.Caja(new(0, -0.91f, 65), new(405, 1.25f, 231), materiales["Asfalto"]);
-            for (int lado = -1; lado <= 1; lado += 2)
-            {
-                terreno.Caja(new(lado * 29.3f, -0.155f, 1.05f), new(2.65f, 0.15f, 53.5f), Piedra);
-                terreno.Caja(new(lado * 41.05f, -0.11f, 11.0f), new(3.35f, 0.18f, 74f), Piedra);
-                for (int i = -4; i <= 6; i++)
-                    terreno.Caja(new(lado * 35.2f, -0.269f, i * 5.8f), new(0.12f, 0.018f, 2.5f), materiales["Lona cruda"]);
-            }
-            Guardar(terreno, contexto, false);
             Colision(contexto, new(0, -0.91f, 65), new(405, 1.25f, 231));
+            var panorama = AssetDatabase.LoadAssetAtPath<GameObject>(Raiz + "/Panorama/PanoramaVillazon.obj");
+            PrefabUtility.InstantiatePrefab(panorama);
 
             Transform laterales = Grupo("Edificios de los laterales", grupo);
             Edificio(laterales, "Edificio claro", -48.8f, 30, 13.5f, 12.1f, 11, -5, "Revoque claro", true);

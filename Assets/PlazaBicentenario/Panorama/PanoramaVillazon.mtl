@@ -1,0 +1,36 @@
+newmtl Fachadas
+Kd 1 1 1
+Ks 0.025 0.025 0.025
+Ns 8
+map_Kd Texturas/Fachadas.jpg
+
+newmtl Locales
+Kd 1 1 1
+Ks 0.025 0.025 0.025
+Ns 8
+map_Kd Texturas/Locales.jpg
+
+newmtl Superficies
+Kd 1 1 1
+Ks 0.025 0.025 0.025
+Ns 8
+map_Kd Texturas/Superficies.jpg
+
+newmtl Calzada
+Kd 1 1 1
+Ks 0.025 0.025 0.025
+Ns 8
+map_Kd Texturas/Calzada.jpg
+
+newmtl Impresos
+Kd 1 1 1
+Ks 0.025 0.025 0.025
+Ns 8
+map_Kd Texturas/Impresos.jpg
+
+newmtl Ladera
+Kd 1 1 1
+Ks 0.025 0.025 0.025
+Ns 8
+map_Kd Texturas/Ladera.jpg
+

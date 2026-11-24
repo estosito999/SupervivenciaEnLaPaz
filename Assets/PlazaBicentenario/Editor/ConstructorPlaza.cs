@@ -74,22 +74,24 @@ namespace SupervivenciaEnLaPaz.Editor
 
         private void PrepararMateriales()
         {
-            Texture2D empedrado = Textura("Mosaico de la plaza", 768, 768, PixelPiso);
+            Texture2D empedrado = Textura("Mosaico de la plaza", 1024, 1024, PixelPiso);
             Texture2D cantera = Textura("Juntas de piedra", 512, 384, PixelMuro);
+            Texture2D piedraFachada = AssetDatabase.LoadAssetAtPath<Texture2D>(Raiz + "/Panorama/Texturas/Canteria.jpg");
+            Texture2D vidrio = AssetDatabase.LoadAssetAtPath<Texture2D>(Raiz + "/Panorama/Texturas/Vidrio.jpg");
 
             MaterialLit("Mosaico", "FFFFFF", 0.15f, empedrado);
-            MaterialLit("Cantera clara", "D1C8B7", 0.18f, cantera);
-            MaterialLit("Cantera tostada", "B89F85", 0.23f, cantera);
+            MaterialLit("Cantera clara", "D1C8B7", 0.18f, piedraFachada);
+            MaterialLit("Cantera tostada", "B89F85", 0.23f, piedraFachada);
             MaterialLit("Basalto", "777C7A", 0.24f);
             MaterialLit("Asfalto", "686D72", 0.19f, cantera);
             MaterialLit("Terraza", "B5A894", 0.16f, cantera);
-            MaterialLit("Arcilla principal", "B68B6C", 0.23f, cantera);
-            MaterialLit("Arcilla al sol", "C79C79", 0.23f, cantera);
-            MaterialLit("Arcilla en sombra", "99765E", 0.23f, cantera);
+            MaterialLit("Arcilla principal", "B68B6C", 0.23f, piedraFachada);
+            MaterialLit("Arcilla al sol", "C79C79", 0.23f, piedraFachada);
+            MaterialLit("Arcilla en sombra", "99765E", 0.23f, piedraFachada);
             MaterialLit("Marco bronce", "8C7256", 0.35f);
-            MaterialLit("Cristal sombreado", "3E5559", 0.47f);
-            MaterialLit("Cristal azul", "648790", 0.51f);
-            MaterialLit("Cristal cálido", "A38D66", 0.41f);
+            MaterialLit("Cristal sombreado", "A1ADAE", 0.47f, vidrio);
+            MaterialLit("Cristal azul", "B1C2CA", 0.51f, vidrio);
+            MaterialLit("Cristal cálido", "BBA78E", 0.41f, vidrio);
             MaterialLit("Acero pintado", "424D53", 0.38f);
             MaterialLit("Madera", "936849", 0.24f, cantera);
             MaterialLit("Roble claro", "BB8F61", 0.23f);
@@ -286,7 +288,8 @@ namespace SupervivenciaEnLaPaz.Editor
             frontal.LookAt(new Vector3(0.55f, 16.5f, 23));
             frontal.gameObject.tag = "MainCamera";
             var camera = frontal.gameObject.AddComponent<Camera>();
-            camera.fieldOfView = 53f;
+            camera.fieldOfView = 62f;
+            camera.nearClipPlane = 0.08f;
             camera.farClipPlane = 1250f;
             var datos = camera.GetUniversalAdditionalCameraData();
             datos.renderPostProcessing = true;
@@ -309,30 +312,8 @@ namespace SupervivenciaEnLaPaz.Editor
             Colision(limites, new Vector3(0, 1.15f, -21.86f), new Vector3(56.48f, 2.9f, 0.20f));
             Colision(limites, new Vector3(0, 1.15f, 19.15f), new Vector3(56.48f, 2.9f, 0.20f));
 
-            Transform jugador = Grupo("Jugador de prueba", null, new Vector3(0, 0.02f, -10.5f));
-            var controlador = jugador.gameObject.AddComponent<CharacterController>();
-            controlador.center = new Vector3(0, 0.89f, 0);
-            controlador.height = 1.78f;
-            controlador.radius = 0.28f;
-            controlador.stepOffset = 0.32f;
-            controlador.skinWidth = 0.032f;
-            controlador.minMoveDistance = 0;
-            jugador.gameObject.AddComponent<RecorridoPlaza>();
-
-            var figura = new Geometria();
-            figura.Copa(new Vector3(0, 1.29f, 0), new Vector3(0.25f, 0.34f, 0.15f), materiales["Chaqueta"], 0.5f);
-            figura.Copa(new Vector3(0, 1.68f, 0.01f), new Vector3(0.14f, 0.16f, 0.13f), materiales["Piel"], 0f, 12);
-            figura.Copa(new Vector3(0, 1.775f, -0.018f), new Vector3(0.145f, 0.065f, 0.13f), Metal, 0f, 12);
-            figura.Copa(new Vector3(0, 1.31f, -0.143f), new Vector3(0.20f, 0.25f, 0.085f), Madera, 0f);
-            for (int lado = -1; lado <= 1; lado += 2)
-            {
-                float x = lado * 0.11f;
-                figura.Cono(new Vector3(x, 0.12f, 0), new Vector3(x, 1.04f, 0), 0.073f, 0.105f, Metal);
-                figura.Caja(new Vector3(x, 0.06f, 0.06f), new Vector3(0.155f, 0.12f, 0.29f), Oscura);
-                figura.Cono(new Vector3(lado * 0.28f, 1.0f, 0), new Vector3(lado * 0.20f, 1.43f, 0), 0.058f, 0.082f, materiales["Chaqueta"]);
-                figura.Copa(new Vector3(lado * 0.28f, 0.96f, 0.015f), new Vector3(0.055f, 0.074f, 0.052f), materiales["Piel"], 0f);
-            }
-            Guardar(figura, jugador);
+            var encuentro = AssetDatabase.LoadAssetAtPath<GameObject>(Raiz + "/Prefabs/EncuentroMonoblock.prefab");
+            PrefabUtility.InstantiatePrefab(encuentro);
         }
 
         [MenuItem("Supervivencia/Capturar vistas de la plaza")]
@@ -502,21 +483,18 @@ namespace SupervivenciaEnLaPaz.Editor
 
         private static Color32 PixelPiso(float u, float v)
         {
-            float x = Mathf.Abs(u - 0.5f);
-            float y = Mathf.Abs(v - 0.5f);
-            float cuadro = Mathf.Max(x, y);
-            bool greca = (cuadro > 0.315f && cuadro < 0.405f && !(v < 0.24f && u > 0.43f && u < 0.60f))
-                || (cuadro > 0.135f && cuadro < 0.225f && !(u > 0.64f && v > 0.43f && v < 0.59f))
-                || (x < 0.054f && y < 0.054f);
+            int columna = Mathf.FloorToInt(u * 8), fila = Mathf.FloorToInt(v * 8);
+            int anillo = Mathf.Min(Mathf.Min(columna, 7 - columna), Mathf.Min(fila, 7 - fila));
+            bool bandaOscura = anillo == 1 || anillo == 3;
             float sx = Mathf.Repeat(u * 8f, 1);
             float sy = Mathf.Repeat(v * 8f, 1);
             float junta = Mathf.Min(Mathf.Min(sx, 1 - sx), Mathf.Min(sy, 1 - sy));
-            float piedra = Mathf.PerlinNoise(Mathf.Floor(u * 8f) * 5.13f + 2f, Mathf.Floor(v * 8f) * 4.45f) - 0.5f;
-            float grano = Mathf.PerlinNoise(u * 184f, v * 193f) - 0.5f;
-            float baseColor = (greca ? 132 : 192) + 12f * piedra + 10f * grano;
-            if (junta < 0.025f)
-                baseColor *= 0.86f;
-            return new Color32((byte)(baseColor + (greca ? 0 : 6)), (byte)(baseColor + 3), (byte)(baseColor - (greca ? 0 : 4)), 255);
+            float losa = Mathf.PerlinNoise(columna * 3.7f + .4f, fila * 5.1f + .2f) - .5f;
+            float veta = Mathf.PerlinNoise(u * 32f + v * 6f, v * 46f) - .5f;
+            float grano = Mathf.PerlinNoise(u * 411f + 2f, v * 385f) - .5f;
+            float tono = (bandaOscura ? 139f : 194f) + 19f * losa + 14f * veta + 26f * grano;
+            tono = Mathf.Lerp(tono - 37f, tono, Mathf.SmoothStep(0, 1, junta / .014f));
+            return new Color32((byte)(tono - 1f), (byte)tono, (byte)(tono + 1f), 255);
         }
 
         private static Color32 PixelMuro(float u, float v)

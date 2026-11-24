@@ -711,7 +711,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128411759}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3530,140 +3530,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 12.8, y: 0.55, z: 17.7}
   m_Center: {x: -21.6, y: 0.275, z: 3.3}
---- !u!1 &956344288
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 956344293}
-  - component: {fileID: 956344292}
-  - component: {fileID: 956344291}
-  - component: {fileID: 956344290}
-  - component: {fileID: 956344289}
-  m_Layer: 0
-  m_Name: Jugador de prueba
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!23 &956344289
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 956344288}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: e74cc052a1922c246a17785fc1db9715, type: 2}
-  - {fileID: 2100000, guid: a04185bd6e7b90141bab45cd20a1e33a, type: 2}
-  - {fileID: 2100000, guid: df1781e3d6959c448a2eb24b9f548f96, type: 2}
-  - {fileID: 2100000, guid: 176b9f836711027459ee4d2e29f67baa, type: 2}
-  - {fileID: 2100000, guid: ab02a8100423daa449d8301799d7fee9, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &956344290
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 956344288}
-  m_Mesh: {fileID: -8055412125712294923, guid: f95313222a3d2bd4fa482b5219cfc942, type: 2}
---- !u!114 &956344291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 956344288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e6eebfb603b1ff43915f19c825a41b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SupervivenciaEnLaPaz.RecorridoPlaza
-  velocidad: 5
---- !u!143 &956344292
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 956344288}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 1.78
-  m_Radius: 0.28
-  m_SlopeLimit: 45
-  m_StepOffset: 0.32
-  m_SkinWidth: 0.032
-  m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0.89, z: 0}
---- !u!4 &956344293
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 956344288}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.02, z: -10.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &972016092
 GameObject:
   m_ObjectHideFlags: 0
@@ -3698,6 +3564,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SupervivenciaEnLaPaz.VistaPlazaBicentenario
   vistaCenital: {fileID: 1411003961}
   tamanoCenital: 22.8
+  distancia: 4.4
+  sensibilidad: 0.14
 --- !u!81 &972016094
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3781,9 +3649,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.08
   far clip plane: 1250
-  field of view: 53
+  field of view: 62
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -7167,6 +7035,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1, y: 2.44, z: 0.1}
   m_Center: {x: -1.96, y: 1.22, z: -1.57}
+--- !u!1001 &956344293
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea656ce9db5f49ceb2796091537198c4, type: 3}
+--- !u!1001 &1950261125
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 034bdbed69075163b913ab9c70e84d13, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -7174,6 +7068,7 @@ SceneRoots:
   - {fileID: 908384405}
   - {fileID: 1332206065}
   - {fileID: 1132660625}
+  - {fileID: 1950261125}
   - {fileID: 1009708307}
   - {fileID: 956344293}
   - {fileID: 657137446}
