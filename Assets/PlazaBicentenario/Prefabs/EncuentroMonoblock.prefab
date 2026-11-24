@@ -335,9 +335,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SupervivenciaEnLaPaz.RivalPlaza
   velocidad: 3.6
-  zonaNavegable:
-    m_Center: {x: 0, y: 2, z: -1}
-    m_Extent: {x: 30, y: 6, z: 23}
 --- !u!1 &377846901
 GameObject:
   m_ObjectHideFlags: 0

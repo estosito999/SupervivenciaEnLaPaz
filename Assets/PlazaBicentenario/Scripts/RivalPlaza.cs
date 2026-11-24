@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,13 +7,10 @@ namespace SupervivenciaEnLaPaz
     public sealed class RivalPlaza : MonoBehaviour
     {
         [SerializeField, Min(0.1f)] private float velocidad = 3.6f;
-        [SerializeField] private Bounds zonaNavegable = new(new Vector3(0f, 2f, -1f), new Vector3(60f, 12f, 46f));
 
         private CharacterController controlador;
         private Animator animador;
         private Transform objetivo;
-        private NavMeshData datos;
-        private NavMeshDataInstance instancia;
         private NavMeshPath ruta;
         private readonly Vector3[] esquinas = new Vector3[32];
         private int cantidad;
@@ -28,21 +24,6 @@ namespace SupervivenciaEnLaPaz
             controlador = GetComponent<CharacterController>();
             animador = GetComponent<Animator>();
             ruta = new NavMeshPath();
-
-            // Los colisionadores incluyen gradas, bancos y puestos. Ambos actores usan Ignore Raycast.
-            Bounds zona = zonaNavegable;
-            zona.center = transform.root.TransformPoint(zona.center);
-            var fuentes = new List<NavMeshBuildSource>();
-            NavMeshBuilder.CollectSources(zona, Physics.DefaultRaycastLayers, NavMeshCollectGeometry.PhysicsColliders,
-                0, new List<NavMeshBuildMarkup>(), fuentes);
-            var ajustes = NavMesh.GetSettingsByIndex(0);
-            ajustes.agentRadius = controlador.radius + 0.05f;
-            ajustes.agentHeight = controlador.height;
-            ajustes.agentClimb = controlador.stepOffset;
-            ajustes.overrideVoxelSize = true;
-            ajustes.voxelSize = 0.1f;
-            datos = NavMeshBuilder.BuildNavMeshData(ajustes, fuentes, zona, Vector3.zero, Quaternion.identity);
-            if (datos != null) instancia = NavMesh.AddNavMeshData(datos);
         }
 
         internal void Perseguir(Transform jugador, float distancia)
@@ -86,10 +67,7 @@ namespace SupervivenciaEnLaPaz
         private void ActualizarRuta()
         {
             cantidad = siguiente = 0;
-            if (!instancia.valid ||
-                !NavMesh.SamplePosition(transform.position, out NavMeshHit inicio, 1.2f, NavMesh.AllAreas) ||
-                !NavMesh.SamplePosition(objetivo.position, out NavMeshHit fin, 1.2f, NavMesh.AllAreas) ||
-                !NavMesh.CalculatePath(inicio.position, fin.position, NavMesh.AllAreas, ruta))
+            if (!NavegacionPlaza.Instancia.CalcularRuta(transform.position, objetivo.position, ruta))
                 return;
             cantidad = ruta.GetCornersNonAlloc(esquinas);
             siguiente = cantidad > 1 ? 1 : 0;
@@ -98,12 +76,6 @@ namespace SupervivenciaEnLaPaz
         private float DistanciaHorizontal(Vector3 punto)
         {
             return Vector3.ProjectOnPlane(punto - transform.position, Vector3.up).magnitude;
-        }
-
-        private void OnDestroy()
-        {
-            if (instancia.valid) instancia.Remove();
-            if (datos != null) Destroy(datos);
         }
     }
 }

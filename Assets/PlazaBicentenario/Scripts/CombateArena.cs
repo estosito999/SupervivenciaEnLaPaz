@@ -15,6 +15,12 @@ namespace SupervivenciaEnLaPaz
         private const float PausaEntreGolpes = 0.52f;
         private enum Fase { Exploracion, Pelea, Victoria, Derrota }
 
+        /// <summary>Se dispara al empezar la pelea con el punto medio de los combatientes.</summary>
+        public static event Action<Vector3> CombateIniciado;
+        public static event Action CombateTerminado;
+        public static bool EnCombate { get; private set; }
+        public static Vector3 CentroCombate { get; private set; }
+
         [SerializeField] private Combatiente jugador1;
         [SerializeField] private Combatiente jugador2;
         [SerializeField, Min(1)] private int dano = 20;
@@ -34,6 +40,7 @@ namespace SupervivenciaEnLaPaz
 
         private void Awake()
         {
+            EnCombate = false;
             jugador = jugador1.Raiz.GetComponent<RecorridoPlaza>();
             rival = jugador2.Raiz.GetComponent<RivalPlaza>();
             jugador1.Preparar(false);
@@ -60,6 +67,9 @@ namespace SupervivenciaEnLaPaz
                         jugador.FijarRival(jugador2.Raiz);
                         rival.Perseguir(jugador1.Raiz, alcance * 0.77f);
                         proximoAtaqueRival = ahora + 1.0f;
+                        EnCombate = true;
+                        CentroCombate = (jugador1.Raiz.position + jugador2.Raiz.position) * 0.5f;
+                        CombateIniciado?.Invoke(CentroCombate);
                     }
                     return;
                 case Fase.Victoria:
@@ -104,10 +114,17 @@ namespace SupervivenciaEnLaPaz
             jugador2.RestaurarPose();
         }
 
+        private void OnDestroy()
+        {
+            EnCombate = false;
+        }
+
         private void TerminarCombate()
         {
             rival.enabled = false;
             jugador2.DetenerAnimacion();
+            EnCombate = false;
+            CombateTerminado?.Invoke();
             cartelResultado.SetActive(true);
             if (jugador1.Vida > 0)
             {

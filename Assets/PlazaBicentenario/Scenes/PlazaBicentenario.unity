@@ -422,6 +422,82 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 83674286}
   m_Mesh: {fileID: -5618345565149481636, guid: f95313222a3d2bd4fa482b5219cfc942, type: 2}
+--- !u!1 &84792388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 84792391}
+  - component: {fileID: 84792390}
+  - component: {fileID: 84792389}
+  m_Layer: 0
+  m_Name: Peatones de la plaza
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &84792389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84792388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc986173d7366045bf4158601e70bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SupervivenciaEnLaPaz.NavegacionPlaza
+  zonaNavegable:
+    m_Center: {x: 0, y: 2, z: -1.3}
+    m_Extent: {x: 30, y: 6, z: 23}
+  radioAgente: 0.28
+  alturaAgente: 1.78
+  alturaEscalon: 0.34
+  tamanoVoxel: 0.1
+--- !u!114 &84792390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84792388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e877cb902c1db4a82f755be89508e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SupervivenciaEnLaPaz.GestorPeatones
+  prefabPeaton: {fileID: 4699517127127062744, guid: ffdce0d27614f004cad54efc2364c90e, type: 3}
+  cantidad: 14
+  zonaPaseo:
+    m_Center: {x: 0, y: 0, z: -1.3}
+    m_Extent: {x: 26, y: 1.5, z: 19}
+  intervaloAparicion: 0.28
+  distanciaMinimaJugador: 7
+  distanciaMinimaRival: 3.5
+  distanciaMinimaEntrePeatones: 1.8
+  distanciaMinimaPaseo: 5
+  distanciaMaximaPaseo: 22
+  radioReaccionCombate: 11
+--- !u!4 &84792391
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84792388}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &88649981
 GameObject:
   m_ObjectHideFlags: 0
@@ -3530,6 +3606,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 12.8, y: 0.55, z: 17.7}
   m_Center: {x: -21.6, y: 0.275, z: 3.3}
+--- !u!1001 &956344293
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 377846905, guid: ea656ce9db5f49ceb2796091537198c4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 377846905, guid: ea656ce9db5f49ceb2796091537198c4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 377846905, guid: ea656ce9db5f49ceb2796091537198c4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea656ce9db5f49ceb2796091537198c4, type: 3}
 --- !u!1 &972016092
 GameObject:
   m_ObjectHideFlags: 0
@@ -6237,6 +6338,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940051839}
   m_Mesh: {fileID: -8088123063276202563, guid: f95313222a3d2bd4fa482b5219cfc942, type: 2}
+--- !u!1001 &1950261125
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 034bdbed69075163b913ab9c70e84d13, type: 3}
 --- !u!1 &2034641362
 GameObject:
   m_ObjectHideFlags: 0
@@ -6739,6 +6853,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2129014986}
   - component: {fileID: 2129014987}
+  - component: {fileID: 2129014988}
   m_Layer: 0
   m_Name: Sol de la tarde
   m_TagString: Untagged
@@ -6826,6 +6941,35 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &2129014988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129014985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &2133077321
 GameObject:
   m_ObjectHideFlags: 0
@@ -7035,32 +7179,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1, y: 2.44, z: 0.1}
   m_Center: {x: -1.96, y: 1.22, z: -1.57}
---- !u!1001 &956344293
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ea656ce9db5f49ceb2796091537198c4, type: 3}
---- !u!1001 &1950261125
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 034bdbed69075163b913ab9c70e84d13, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -7074,3 +7192,4 @@ SceneRoots:
   - {fileID: 657137446}
   - {fileID: 1411003961}
   - {fileID: 972016097}
+  - {fileID: 84792391}
