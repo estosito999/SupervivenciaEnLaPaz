@@ -21,9 +21,9 @@ namespace SupervivenciaEnLaPaz.Editor
         private const string RutaPiel = "Assets/PlazaBicentenario/Personajes/Rival_Piel.mat";
         private const string RutaCabello = "Assets/PlazaBicentenario/Personajes/Rival_Cabello.mat";
         private const string RutaRostro = "Assets/PlazaBicentenario/Personajes/Luis.mat";
-        private const string RutaReposo = "Assets/PlazaBicentenario/Personajes/Animaciones/Idle.fbx";
-        private const string RutaCaminar = "Assets/PlazaBicentenario/Personajes/Animaciones/Walking2.fbx";
-        private const string RutaControlador = "Assets/PlazaBicentenario/Personajes/Animaciones/Peaton.controller";
+        private const string RutaReposo = "Assets/PlazaBicentenario/Animaciones/Idle.fbx";
+        private const string RutaCaminar = "Assets/PlazaBicentenario/Animaciones/Walking2.fbx";
+        private const string RutaControlador = "Assets/PlazaBicentenario/Animaciones/Peaton.controller";
         private const string RutaPrefab = "Assets/PlazaBicentenario/Prefabs/Peaton.prefab";
         private const string RutaEscena = "Assets/PlazaBicentenario/Scenes/PlazaBicentenario.unity";
 
@@ -47,7 +47,7 @@ namespace SupervivenciaEnLaPaz.Editor
 
             if (AssetDatabase.LoadAssetAtPath<GameObject>(RutaPrefab) == null ||
                 AssetDatabase.LoadAssetAtPath<AnimatorController>(RutaControlador) == null ||
-                Object.FindFirstObjectByType<GestorPeatones>(FindObjectsInactive.Include) == null)
+                Object.FindAnyObjectByType<GestorPeatones>(FindObjectsInactive.Include) == null)
             {
                 Configurar();
             }
@@ -184,7 +184,7 @@ namespace SupervivenciaEnLaPaz.Editor
             if (escena.path != RutaEscena)
                 escena = EditorSceneManager.OpenScene(RutaEscena, OpenSceneMode.Single);
 
-            GestorPeatones gestor = Object.FindFirstObjectByType<GestorPeatones>(FindObjectsInactive.Include);
+            GestorPeatones gestor = Object.FindAnyObjectByType<GestorPeatones>(FindObjectsInactive.Include);
             GameObject raiz;
             if (gestor == null)
             {
@@ -196,7 +196,7 @@ namespace SupervivenciaEnLaPaz.Editor
                 raiz = gestor.gameObject;
             }
 
-            if (Object.FindFirstObjectByType<NavegacionPlaza>(FindObjectsInactive.Include) == null)
+            if (Object.FindAnyObjectByType<NavegacionPlaza>(FindObjectsInactive.Include) == null)
                 raiz.AddComponent<NavegacionPlaza>();
 
             Peaton prefabPeaton = prefab.GetComponent<Peaton>();
