@@ -28,6 +28,10 @@ namespace SupervivenciaEnLaPaz
         internal int RivalesEnPie => contrarios.Count;
         internal bool VictoriaDelJugador => fase == Fase.Victoria;
 
+        // Acceso de solo lectura para HUD externo; conserva el sistema original de dano.
+        public int VidaJugador => jugador1 != null ? jugador1.Vida : 0;
+        public int VidaMaximaJugador => VidaInicial;
+
         [SerializeField] private Combatiente jugador1;
         [SerializeField] private Combatiente jugador2;
         [SerializeField, Min(1)] private int dano = 20;
